@@ -1,47 +1,37 @@
+
 package com.epoxicotiza.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.epoxicotiza.app.ui.screens.login.LoginScreen
 import com.epoxicotiza.app.ui.theme.EpoxiCotizaTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
+
         setContent {
             EpoxiCotizaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                LoginScreen(
+                    onLoginClick = { email, password ->
+                        // Próximamente: validar credenciales
+                    },
+                    onGoogleClick = {
+                        // Próximamente: Firebase Google Auth
+                    },
+                    onSignUpClick = {
+                        // Próximamente: abrir registro
+                    },
+                    onForgotPasswordClick = {
+                        // Próximamente: recuperar contraseña
+                    }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    EpoxiCotizaTheme {
-        Greeting("Android")
     }
 }
